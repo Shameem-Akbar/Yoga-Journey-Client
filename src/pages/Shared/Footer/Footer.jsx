@@ -8,7 +8,7 @@ import moment from 'moment/moment';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-base-200 text-base-content mt-40">
+            <footer className="footer p-10 bg-base-200 text-base-content border-t-slate-300 border-t-2">
                 <div>
                     <img width={"190rem"} src={logo} alt="" />
                     <h4 className='ml-2 text-base text-slate-500'>Feel free to reach out to us for any inquiries or assistance <br /> – we're just a phone call or email away!</h4>

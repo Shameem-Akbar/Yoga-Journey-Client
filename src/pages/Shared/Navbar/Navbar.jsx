@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../assets/Icons/logo.png'
 import ActiveLink from './ActiveLink/ActiveLink';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
 
     const navItems = (
         <>
@@ -16,7 +19,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar fixed z-10 md:px-6 bg-base-200 py-3">
+        <div className="navbar md:px-6 bg-base-200 py-3 border-b-2 border-slate-300">
             <div className="navbar-start">
                 <div className="dropdown text-black">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -50,7 +53,20 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to="/login"><button className='btn px-5 btn-primary text-white'>Login</button></NavLink>
+                {
+                    user ? <>
+                        <div className='flex gap-2'>
+                            <label className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user.photoURL} />
+                                </div>
+                            </label>
+                            <button className="btn btn-secondary text-white px-5">Log Out</button>
+                        </div>
+                    </> : <>
+                        <NavLink to="/login"><button className='btn btn-primary text-white px-5'>Login</button></NavLink>
+                    </>
+                }
             </div>
         </div>
     );
