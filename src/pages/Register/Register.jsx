@@ -2,15 +2,68 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import yogaLogo from "../../assets/Icons/yogaLogo2.gif"
 import { ImGoogle3 } from 'react-icons/Im';
+import Swal from 'sweetalert2';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm({ mode: 'onChange' });
     const watchPassword = watch('password');
     const watchConfirmPassword = watch('confirm');
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setLoading, setUser, handleGoogleLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+
+    //navigating to private page or home page
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state || '/';
+
+    //creating user
+    const onSubmit = data => {
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setUser(loggedUser)
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        setLoading(false);
+                        reset();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate(from, { replace: true });
+                    })
+                    .catch(error => console.log(error))
+
+            })
+            .catch(error => {
+                if (error.message.split(' ')[2]) {
+                    setError("Email Already Exists")
+                }
+            })
+    }
+    //google sign in
+    const handleGoogleSignIn = () => {
+        handleGoogleLogin(googleProvider)
+            .then(result => {
+                const loggedInUser = result.user;
+                navigate(from, { replace: true });
+                setUser(loggedInUser);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'User Logged in successfully.',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => console.log(error))
+    }
 
     return (
         <>
@@ -24,7 +77,7 @@ const Register = () => {
                         <img src={yogaLogo} alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body pb-0">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
                             <h2 className='text-center font-semibold text-2xl underline'>Register</h2>
                             <div className="form-control">
                                 <label className="label">
@@ -85,7 +138,7 @@ const Register = () => {
                             <hr style={{ width: '50%', borderBottom: '1px solid gray' }} />
                         </div>
                         <div className='px-7 my-3'>
-                            <button className='btn btn-secondary btn-block text-white '><ImGoogle3 className='text-lg'></ImGoogle3> Google</button>
+                            <button onClick={handleGoogleSignIn} className='btn btn-secondary btn-block text-white '><ImGoogle3 className='text-lg'></ImGoogle3> Google</button>
                         </div>
                     </div>
                 </div>

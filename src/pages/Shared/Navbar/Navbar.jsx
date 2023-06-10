@@ -6,7 +6,13 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
 
     const navItems = (
         <>
@@ -61,7 +67,7 @@ const Navbar = () => {
                                     <img src={user.photoURL} />
                                 </div>
                             </label>
-                            <button className="btn btn-secondary text-white px-5">Log Out</button>
+                            <button onClick={handleLogOut} className="btn btn-secondary text-white px-5">Log Out</button>
                         </div>
                     </> : <>
                         <NavLink to="/login"><button className='btn btn-primary text-white px-5'>Login</button></NavLink>
