@@ -20,7 +20,7 @@ const Navbar = () => {
             <ActiveLink to="/instructors">Instructors</ActiveLink>
             <ActiveLink to="/classes">Classes</ActiveLink>
             <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
-            <ActiveLink to='/contact'>Contact Us</ActiveLink>
+            <ActiveLink to='/contact'>Contact</ActiveLink>
         </>
     );
 
