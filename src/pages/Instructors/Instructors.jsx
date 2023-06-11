@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
 const Instructors = () => {
     return (
@@ -13,10 +14,10 @@ const Instructors = () => {
                     </figure>
                     <div className='px-4 pb-4'>
                         <h2 className="card-title mt-2">Name: <span className=' font-normal'>Shameem Akbar</span></h2>
-                        <p><span className='font-semibold'>Email:</span> <span className='text-slate-500'>shameemakbar789@gmail.com</span></p>
+                        <p className='my-0.5'><span className='font-semibold'>Email:</span> <span className='text-slate-500'>shameemakbar789@gmail.com</span></p>
                         <p><span className='font-semibold'>No. of Classes Taken:</span> <span className='text-slate-500'>40</span></p>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-sm text-white btn-primary mt-6">See Classes</button>
+                            <button className="btn btn-sm text-white btn-primary mt-6">See Classes <FaArrowRight /> </button>
                         </div>
                     </div>
                 </div>

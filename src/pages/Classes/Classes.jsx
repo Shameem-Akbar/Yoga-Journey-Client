@@ -13,9 +13,9 @@ const Classes = () => {
                     </figure>
                     <div className='px-4 pb-4'>
                         <h2 className="card-title mt-2">Name: <span className=' font-normal'>Yoga Dance</span></h2>
-                        <p><span className='font-semibold'>Instructor Name:</span> <span className='text-slate-500'>Rahim Mia</span></p>
+                        <p className='my-0.5'><span className='font-semibold'>Instructor Name:</span> <span className='text-slate-500'>Rahim Mia</span></p>
                         <p><span className='font-semibold'>Available Seats:</span> <span className='text-slate-500'>500</span></p>
-                        <p><span className='font-semibold'>Price:</span> <span className='text-slate-500'>$40</span></p>
+                        <p className='mt-0.5'><span className='font-semibold'>Price:</span> <span className='text-slate-500'>$40</span></p>
                         <div className="card-actions justify-end">
                             <button className="btn btn-sm text-white btn-primary mt-6">Select Class</button>
                         </div>
