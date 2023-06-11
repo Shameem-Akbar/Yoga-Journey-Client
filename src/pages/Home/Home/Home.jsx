@@ -4,6 +4,7 @@ import SliderSection from '../SliderSection/SliderSection';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import MidBanner from '../MidBanner/MidBanner';
+import TopSection from '../TopSection/TopSection';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
                 <title>Home | Yoga Journey</title>
             </Helmet>
             <SliderSection></SliderSection>
+            <TopSection></TopSection>
             <PopularClasses></PopularClasses>
             <MidBanner></MidBanner>
             <PopularInstructors></PopularInstructors>
