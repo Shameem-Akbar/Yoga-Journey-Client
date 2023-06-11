@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import SliderSection from '../SliderSection/SliderSection';
 
 const Home = () => {
     return (
@@ -7,7 +8,8 @@ const Home = () => {
             <Helmet>
                 <title>Home | Yoga Journey</title>
             </Helmet>
-            <h2>Home</h2>
+            <SliderSection></SliderSection>
+
         </div>
     );
 };
