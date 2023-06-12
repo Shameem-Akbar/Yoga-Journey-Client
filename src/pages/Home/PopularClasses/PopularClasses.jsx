@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PopularClasses = () => {
     return (
         <div className='mt-6 mb-6'>
-            <h2 className='text-center text-5xl font-bold uppercase'>Our Popular Classes</h2>
+            <h2 className='text-center text-3xl md:text-5xl font-bold uppercase'>Our Popular Classes</h2>
             <div className='px-4 md:px-72 mt-2 md:mt-3 md:text-lg text-slate-500'>
                 <p className='text-center'>Our popular class is designed to challenge your strength, stretch your body, and help you find peace through easy, mindful breathing. Led by our exceptional team of world-class instructors.</p>
             </div>

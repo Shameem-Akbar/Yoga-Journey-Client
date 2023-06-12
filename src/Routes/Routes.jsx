@@ -9,6 +9,10 @@ import PageNotFound from "../Layout/PageNotFound/PageNotFound";
 import Contact from "../pages/Contact/Contact";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import DashBoard from "../Layout/DashBoard/DashBoard";
+import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
+import ManageUsers from "../pages/DashBoard/Admin/ManageUsers/ManageUsers";
+
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +42,20 @@ export const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact></Contact>
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <DashBoard></DashBoard>,
+        children: [
+            {
+                path: 'manage-classes',
+                element: <ManageClasses></ManageClasses>
+            },
+            {
+                path: 'manage-users',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     },

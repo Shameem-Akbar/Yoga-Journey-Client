@@ -1,19 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { ImGoogle3 } from 'react-icons/Im';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import yogaLogo from "../../assets/Icons/yogaLogo.gif"
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { GoogleAuthProvider } from 'firebase/auth';
-import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { signIn, setLoading, setUser, handleGoogleLogin } = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider();
+    const { signIn, setLoading } = useContext(AuthContext);
+
 
     //navigating user
     const location = useLocation();
@@ -32,23 +30,6 @@ const Login = () => {
                 setError(error.message);
                 setLoading(false);
             })
-    }
-
-    //google sign in
-    const handleGoogleSignIn = () => {
-        handleGoogleLogin(googleProvider)
-            .then(result => {
-                const loggedInUser = result.user;
-                navigate(from, { replace: true });
-                setUser(loggedInUser);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'User Logged in successfully.',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            })
-            .catch(error => console.log(error))
     }
 
     //password hide/show
@@ -105,14 +86,7 @@ const Login = () => {
                         <div className='px-8 pb-4 mt-2'>
                             <p className='text-center'><small>Don&apos;t have an account? <Link to="/register"><span className='text-primary font-semibold underline'>Register</span></Link></small></p>
                         </div>
-                        <div className='px-7' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <hr style={{ width: '50%', borderBottom: '1px solid gray' }} />
-                            <span className='px-2 text-slate-500'>OR</span>
-                            <hr style={{ width: '50%', borderBottom: '1px solid gray' }} />
-                        </div>
-                        <div className='px-7 my-3'>
-                            <button onClick={handleGoogleSignIn} className='btn btn-secondary btn-block text-white '><ImGoogle3 className='text-lg'></ImGoogle3> Google</button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

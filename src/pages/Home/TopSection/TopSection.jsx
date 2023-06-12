@@ -4,7 +4,7 @@ import image1 from '../../../assets/Pictures/image1.jpg'
 
 const TopSection = () => {
     return (
-        <div className='md:py-12 md:px-12 md:mt-8'>
+        <div className='md:py-12 md:mt-8'>
             <div className="hero min-h-fit">
                 <div className="hero-content p-2 md:gap-20 md:px-24 flex-col-reverse lg:flex-row">
 

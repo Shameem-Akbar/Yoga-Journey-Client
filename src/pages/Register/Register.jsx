@@ -4,16 +4,15 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import yogaLogo from "../../assets/Icons/yogaLogo2.gif"
-import { ImGoogle3 } from 'react-icons/Im';
 import Swal from 'sweetalert2';
-import { GoogleAuthProvider } from 'firebase/auth';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Register = () => {
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm({ mode: 'onChange' });
     const watchPassword = watch('password');
     const watchConfirmPassword = watch('confirm');
-    const { createUser, updateUserProfile, setLoading, setUser, handleGoogleLogin } = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider();
+    const { createUser, updateUserProfile, setLoading, setUser } = useContext(AuthContext);
+
 
     //navigating to private page or home page
     const location = useLocation();
@@ -29,15 +28,27 @@ const Register = () => {
                 setUser(loggedUser)
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        setLoading(false);
-                        reset();
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'User created successfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate(from, { replace: true });
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'User created successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate(from, { replace: true });
+                                }
+                            })
                     })
                     .catch(error => console.log(error))
 
@@ -47,22 +58,6 @@ const Register = () => {
                     setError("Email Already Exists")
                 }
             })
-    }
-    //google sign in
-    const handleGoogleSignIn = () => {
-        handleGoogleLogin(googleProvider)
-            .then(result => {
-                const loggedInUser = result.user;
-                navigate(from, { replace: true });
-                setUser(loggedInUser);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'User Logged in successfully.',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            })
-            .catch(error => console.log(error))
     }
 
     return (
@@ -132,14 +127,7 @@ const Register = () => {
                         <div className='px-8 pb-4 mt-2'>
                             <p className='text-center'><small>Already have an account? <Link to="/login"><span className='text-primary font-semibold underline'>Login</span></Link></small></p>
                         </div>
-                        <div className='px-7' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <hr style={{ width: '50%', borderBottom: '1px solid gray' }} />
-                            <span className='px-2 text-slate-500'>OR</span>
-                            <hr style={{ width: '50%', borderBottom: '1px solid gray' }} />
-                        </div>
-                        <div className='px-7 my-3'>
-                            <button onClick={handleGoogleSignIn} className='btn btn-secondary btn-block text-white '><ImGoogle3 className='text-lg'></ImGoogle3> Google</button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
