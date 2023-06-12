@@ -60,7 +60,7 @@ const ManageUsers = () => {
             </Helmet>
             <h3 className="text-3xl font-semibold my-4">Total Users: {users.length}</h3>
             <div className="overflow-x-auto">
-                <table className="table table-zebra w-full border">
+                <table className="table table-zebra w-full border-2 border-slate-500">
                     {/* head */}
                     <thead className='bg-slate-700 text-white'>
                         <tr>
