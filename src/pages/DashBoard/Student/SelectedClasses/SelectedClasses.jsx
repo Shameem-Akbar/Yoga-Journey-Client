@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
 
@@ -44,7 +45,7 @@ const SelectedClasses = () => {
     }
     return (
         <div className="w-full space-y-4 my-8  py-8">
-            <h1 className="font-semibold text-5xl text-center mb-8">My Selected Classes</h1>
+            <h1 className="font-semibold text-5xl text-center mb-8 uppercase">My Selected Classes</h1>
             <div className="overflow-x-auto mx-4">
                 <table className="table table-zebra w-full border-2 border-slate-500">
                     {/* head */}
@@ -69,7 +70,7 @@ const SelectedClasses = () => {
                                 </div></td>
                                 <td>{studentClass.className}</td>
                                 <td className='pl-12'>${studentClass.price}</td>
-                                <td><button className="btn btn-success px-6 text-white">Pay</button></td>
+                                <td><Link to="/dashboard/payment"><button className="btn btn-success px-6 text-white">Pay</button></Link></td>
                                 <td><button onClick={() => handleDeleteClass(studentClass)} className="btn btn-warning  text-white">Delete</button></td>
                             </tr>)
                         }

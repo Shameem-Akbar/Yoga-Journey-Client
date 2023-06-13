@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import { RiAdminFill } from 'react-icons/ri'
+import { MdPayment } from 'react-icons/Md'
 import { AiOutlineAppstore, AiOutlineSlack } from 'react-icons/Ai'
 import { HiUsers } from 'react-icons/Hi'
 import { ImUserTie } from 'react-icons/Im'
@@ -79,6 +80,11 @@ const DashBoard = () => {
                                         ? "text-white font-semibold bg-black flex items-center gap-2"
                                         : "flex font-semibold items-center gap-2"
                                 }><HiUsers></HiUsers> My Enrolled Classes</NavLink></li>
+                                <li><NavLink to="payment" className={({ isActive }) =>
+                                    isActive
+                                        ? "text-white font-semibold bg-black flex items-center gap-2"
+                                        : "flex font-semibold items-center gap-2"
+                                }><MdPayment></MdPayment> Payment</NavLink></li>
 
                                 {/* divider */}
                                 <div className="divider"></div>
