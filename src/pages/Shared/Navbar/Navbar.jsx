@@ -53,7 +53,7 @@ const Navbar = () => {
                     </label>
                     <ul
                         tabIndex={0}
-                        className="menu menu-compact dropdown-content mt-1 pl-3 shadow bg-base-100 rounded-box w-40 space-y-2 uppercase"
+                        className="menu menu-compact dropdown-content mt-1 pl-3 shadow z-10 bg-base-100 rounded-box w-40 space-y-2 uppercase"
                     >
                         {navItems}
                     </ul>
@@ -74,7 +74,7 @@ const Navbar = () => {
                                     <img src={user.photoURL} />
                                 </div>
                             </label>
-                            <button onClick={handleLogOut} className="btn btn-secondary text-white px-5">Log Out</button>
+                            <button onClick={handleLogOut} className="btn btn-warning text-white px-5">Log Out</button>
                         </div>
                     </> : <>
                         <NavLink to="/login"><button className='btn btn-primary text-white px-5'>Login</button></NavLink>

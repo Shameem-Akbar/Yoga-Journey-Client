@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 const Instructors = () => {
     return (
         <div className='mb-4'>
-            <div className='bg-secondary'>
+            <div className='bg-primary'>
                 <h1 className='font-semibold text-5xl text-center py-8 text-white'>Instructors</h1>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6 py-2 md:py-8 md:px-28'>

@@ -30,7 +30,7 @@ const SliderSection = () => {
                         <p className='text-slate-400 hidden md:block'>Elevate your summer experience with our enchanting Yoga Camp at Yoga Journey. Embrace the joy of shared laughter, and nurture your body and mind with the transformative power of yoga. </p>
                         <div className='flex justify-center gap-4 mt-3'>
                             <button className='btn btn-primary px-6'>Join Us</button>
-                            <button className='btn btn-outline btn-info'>Explore Now</button>
+                            <button className='btn btn-outline btn-success'>Explore Now</button>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ const SliderSection = () => {
                         <p className='text-slate-400 hidden md:block'>Unveil the harmony and bliss of summer at our captivating Yoga Camp at Yoga Journey. Immerse yourself in a transformative journey where nature and yoga converge to create a sanctuary of serenity.</p>
                         <div className='flex justify-center gap-4 mt-3'>
                             <button className='btn btn-primary px-6'>Join Us </button>
-                            <button className='btn btn-outline btn-info'>Explore Now</button>
+                            <button className='btn btn-outline btn-success'>Explore Now</button>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ const SliderSection = () => {
                         <p className='text-slate-400 hidden md:block'>Indulge in a transformative summer experience at our Yoga Wellness Retreat, where relaxation and rejuvenation await. Escape the hustle and bustle of daily life and immerse yourself in a sanctuary of tranquility at Yoga Journey.</p>
                         <div className='flex justify-center gap-4 mt-3'>
                             <button className='btn btn-primary px-6'>Join Us</button>
-                            <button className='btn btn-outline btn-info'>Explore Now</button>
+                            <button className='btn btn-outline btn-success'>Explore Now</button>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ const SliderSection = () => {
                         <p className='text-slate-400 hidden md:block'>Elevate your summer experience with our enchanting Yoga Camp at Yoga Journey. Step into a world of bliss, where the gentle breeze and warm sunrays embrace your journey towards inner peace and well-being.</p>
                         <div className='flex justify-center gap-4 mt-3'>
                             <button className='btn btn-primary px-6'>Join Us</button>
-                            <button className='btn btn-outline btn-info'>Explore Now</button>
+                            <button className='btn btn-outline btn-success'>Explore Now</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const SliderSection = () => {
                         <p className='text-slate-400 hidden md:block'>Immerse yourself in the tranquility of our Summer Yoga Camp at Yoga JOurney. Discover a harmonious blend of relaxation, nature, and self-discovery as you embark on a journey of wellness and rejuvenation.</p>
                         <div className='flex justify-center gap-4 mt-3'>
                             <button className='btn btn-primary px-6'>Join Us</button>
-                            <button className='btn btn-outline btn-info'>Explore Now</button>
+                            <button className='btn btn-outline btn-success'>Explore Now</button>
                         </div>
                     </div>
                 </div>
