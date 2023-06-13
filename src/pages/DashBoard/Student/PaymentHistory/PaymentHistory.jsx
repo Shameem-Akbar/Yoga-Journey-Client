@@ -25,7 +25,7 @@ const PaymentHistory = () => {
                             <th className='text-lg uppercase'>Transaction Id</th>
                             <th className='text-lg uppercase'>Class Name</th>
                             <th className='text-lg uppercase pl-8'>Price</th>
-                            <th className='text-lg uppercase pl-8'>Date</th>
+                            <th className='text-lg uppercase pl-16'>Date</th>
                         </tr>
                     </thead>
                     <tbody>

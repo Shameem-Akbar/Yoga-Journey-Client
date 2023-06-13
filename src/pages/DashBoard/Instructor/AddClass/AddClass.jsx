@@ -16,6 +16,7 @@ const AddClass = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const { user } = useAuth()
+    console.log(user);
 
     const onSubmit = (data) => {
         const formData = new FormData();
@@ -32,6 +33,7 @@ const AddClass = () => {
                         className: data.className,
                         instructorName: data.instructorName,
                         instructorEmail: data.instructorEmail,
+                        instructorImage: data.instructorImage,
                         availableSeats: parseFloat(data.availableSeats),
                         image: result.data.display_url,
                         price: parseFloat(data.price),
@@ -89,6 +91,19 @@ const AddClass = () => {
                         type="text"
                         {...register("instructorName")}
                         defaultValue={user.displayName}
+                        className="input input-bordered w-full "
+                        required readOnly
+                    />
+                </div>
+                <div className="form-control w-full hidden">
+                    <label className="label">
+                        <span className="label-text font-semibold">Instructor Name</span>
+                    </label>
+                    <input
+                        type="text"
+                        {...register("instructorImage")}
+                        defaultValue={user.photoURL
+                        }
                         className="input input-bordered w-full "
                         required readOnly
                     />

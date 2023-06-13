@@ -10,6 +10,7 @@ import useAuth from '../../hooks/useAuth';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+
     const { signIn, setLoading } = useAuth();
 
 
@@ -27,7 +28,6 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                setError(error.message);
                 setLoading(false);
             })
     }
