@@ -25,7 +25,7 @@ const PopularClasses = () => {
                         <p><span className='font-semibold'>No. of Students:</span> <span className='text-slate-500'>3333</span></p>
                         <p><span className='font-semibold'>Price:</span> <span className='text-slate-500'>$40</span></p>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-sm text-white btn-primary mt-6">Select Class</button>
+                            <button className="btn btn-sm text-white btn-primary mt-6">View Details</button>
                         </div>
                     </div>
                 </div>

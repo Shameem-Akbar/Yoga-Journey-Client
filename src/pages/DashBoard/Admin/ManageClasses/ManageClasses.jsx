@@ -55,7 +55,6 @@ const ManageClasses = () => {
                         title: `${manageClass.className} is Denied!`,
                         showConfirmButton: false,
                         timer: 1500
-
                     })
                 }
             })
@@ -77,6 +76,12 @@ const ManageClasses = () => {
                 console.log(data);
                 if (data.modifiedCount) {
                     refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Feedback Sent!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     setIsModalOpen(false);
                     setFeedbackText('');
                 }
@@ -158,40 +163,27 @@ const ManageClasses = () => {
                                     onRequestClose={() => setIsModalOpen(false)}
                                     contentLabel="Feedback Modal"
                                 >
-                                    <h2>Feedback</h2>
-                                    <textarea
-                                        value={feedbackText}
-                                        onChange={(e) => setFeedbackText(e.target.value)}
-                                    />
-                                    <button
-                                        onClick={() => handleFeedBack(manageClass)}
-                                        className="btn btn-error text-white"
-                                    >
-                                        Send
-                                    </button>
+                                    <div className='flex flex-col justify-center items-center mt-20 p-8'>
+                                        <h2 className='font-semibold text-5xl'>Feedback</h2>
+                                        <textarea
+                                            className='border-2 mt-4'
+                                            style={{ width: '100%', maxWidth: '280px', height: '80px' }}
+                                            value={feedbackText}
+                                            onChange={(e) => setFeedbackText(e.target.value)}
+                                        />
+                                        <button
+                                            onClick={() => handleFeedBack(manageClass)}
+                                            className="btn btn-error text-white mt-2 btn-wide"
+                                        >
+                                            Send
+                                        </button>
+                                    </div>
                                 </Modal>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
-            <Modal
-                isOpen={isModalOpen}
-                onRequestClose={() => setIsModalOpen(false)}
-                contentLabel="Feedback Modal"
-            >
-                <h2>Feedback</h2>
-                <textarea
-                    value={feedbackText}
-                    onChange={(e) => setFeedbackText(e.target.value)}
-                />
-                <button
-                    onClick={() => handleFeedBack(manageClass)}
-                    className="btn btn-error text-white"
-                >
-                    Send
-                </button>
-            </Modal>
         </div>
     );
 };
