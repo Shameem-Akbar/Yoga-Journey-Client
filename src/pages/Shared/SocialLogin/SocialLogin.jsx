@@ -1,12 +1,11 @@
 import React from 'react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { ImGoogle3 } from 'react-icons/Im';
-import { useContext } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const SocialLogin = () => {
-    const { setUser, handleGoogleLogin } = useContext(AuthContext);
+    const { handleGoogleLogin } = useAuth();
     const googleProvider = new GoogleAuthProvider();
 
     const navigate = useNavigate();

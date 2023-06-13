@@ -12,6 +12,13 @@ import Classes from "../pages/Classes/Classes";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/DashBoard/Admin/ManageUsers/ManageUsers";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import AddClass from "../pages/DashBoard/Instructor/AddClass/AddClass";
+import MyClasses from "../pages/DashBoard/Instructor/MyClasses/MyClasses";
+import SelectedClasses from "../pages/DashBoard/Student/SelectedClasses/SelectedClasses";
+import EnrolledClasses from "../pages/DashBoard/Student/EnrolledClasses/EnrolledClasses";
+import InstructorRoute from "./InstructorRoute";
 
 
 export const router = createBrowserRouter([
@@ -47,15 +54,34 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashBoard></DashBoard>,
+        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children: [
+            //admin routes
             {
                 path: 'manage-classes',
-                element: <ManageClasses></ManageClasses>
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            //Instructor Routes
+            {
+                path: 'add-class',
+                element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+            },
+            {
+                path: "my-classes",
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
+            },
+            //student Routes
+            {
+                path: "selected-classes",
+                element: <SelectedClasses></SelectedClasses>
+            },
+            {
+                path: "enrolled-classes",
+                element: <EnrolledClasses></EnrolledClasses>
             }
         ]
     },

@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import logo from '../../../assets/Icons/logo.png'
 import ActiveLink from './ActiveLink/ActiveLink';
 import { NavLink } from 'react-router-dom';
-import { AuthContext } from '../../../providers/AuthProvider';
+import useAuth from '../../../hooks/useAuth';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
+
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const handleLogOut = () => {
         logOut()
@@ -19,7 +24,7 @@ const Navbar = () => {
             <ActiveLink to="/">Home</ActiveLink>
             <ActiveLink to="/instructors">Instructors</ActiveLink>
             <ActiveLink to="/classes">Classes</ActiveLink>
-            <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
+            <ActiveLink to={isAdmin ? '/dashboard/manage-classes' : isInstructor ? "/dashboard/add-class" : "/dashboard/selected-classes"}>Dashboard</ActiveLink>
             <ActiveLink to='/contact'>Contact</ActiveLink>
         </>
     );

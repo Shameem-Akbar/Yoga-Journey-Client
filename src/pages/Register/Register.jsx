@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../providers/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import yogaLogo from "../../assets/Icons/yogaLogo2.gif"
 import Swal from 'sweetalert2';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm({ mode: 'onChange' });
     const watchPassword = watch('password');
     const watchConfirmPassword = watch('confirm');
-    const { createUser, updateUserProfile, setLoading, setUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setLoading, setUser } = useAuth()
 
 
     //navigating to private page or home page

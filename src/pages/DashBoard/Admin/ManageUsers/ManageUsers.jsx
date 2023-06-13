@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const ManageUsers = () => {
+    const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
-        return res.json()
+        const res = await axiosSecure.get('/users')
+        return res.data;
     })
 
     const handleMakeAdmin = user => {
@@ -58,6 +60,7 @@ const ManageUsers = () => {
             <Helmet>
                 <title>Manage Users | Yoga Journey</title>
             </Helmet>
+            <h1 className="font-semibold text-5xl text-center mb-8">Manage Users</h1>
             <h3 className="text-3xl font-semibold my-4">Total Users: {users.length}</h3>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full border-2 border-slate-500">

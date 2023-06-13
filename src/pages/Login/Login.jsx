@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import yogaLogo from "../../assets/Icons/yogaLogo.gif"
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../providers/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { signIn, setLoading } = useContext(AuthContext);
+    const { signIn, setLoading } = useAuth();
 
 
     //navigating user
