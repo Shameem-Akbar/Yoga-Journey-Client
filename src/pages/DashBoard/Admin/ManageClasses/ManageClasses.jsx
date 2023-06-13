@@ -125,7 +125,7 @@ const ManageClasses = () => {
                                 <td>{manageClass.instructorName}</td>
                                 <td>{manageClass.instructorEmail}</td>
                                 <td className='pl-20'>{manageClass.availableSeats}</td>
-                                <td className='pl-12'>{manageClass.price}</td>
+                                <td className='pl-12'>${manageClass.price}</td>
                                 <td><button className='btn btn-primary text-white'>{manageClass.status}</button></td>
                                 {
                                     manageClass.status === 'approved' || manageClass.status === "denied" ? (
