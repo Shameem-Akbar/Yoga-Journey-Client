@@ -80,11 +80,11 @@ const DashBoard = () => {
                                         ? "text-white font-semibold bg-black flex items-center gap-2"
                                         : "flex font-semibold items-center gap-2"
                                 }><HiUsers></HiUsers> My Enrolled Classes</NavLink></li>
-                                <li><NavLink to="payment" className={({ isActive }) =>
+                                <li><NavLink to="payment-history" className={({ isActive }) =>
                                     isActive
                                         ? "text-white font-semibold bg-black flex items-center gap-2"
                                         : "flex font-semibold items-center gap-2"
-                                }><MdPayment></MdPayment> Payment</NavLink></li>
+                                }><MdPayment></MdPayment> Payment History</NavLink></li>
 
                                 {/* divider */}
                                 <div className="divider"></div>

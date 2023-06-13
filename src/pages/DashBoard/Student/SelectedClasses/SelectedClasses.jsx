@@ -70,7 +70,7 @@ const SelectedClasses = () => {
                                 </div></td>
                                 <td>{studentClass.className}</td>
                                 <td className='pl-12'>${studentClass.price}</td>
-                                <td><Link to="/dashboard/payment"><button className="btn btn-success px-6 text-white">Pay</button></Link></td>
+                                <td><Link to={`/dashboard/payment?price=${studentClass.price}&className=${studentClass.className}`}><button className="btn btn-success px-6 text-white">Pay</button></Link></td>
                                 <td><button onClick={() => handleDeleteClass(studentClass)} className="btn btn-warning  text-white">Delete</button></td>
                             </tr>)
                         }
