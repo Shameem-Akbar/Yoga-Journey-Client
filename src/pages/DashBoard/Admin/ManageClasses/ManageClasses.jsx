@@ -3,6 +3,10 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import Modal from 'react-modal';
+import { useState } from 'react';
+
+
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -11,7 +15,12 @@ const ManageClasses = () => {
         return res.data;
     })
 
-    console.log(classes);
+    //modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [feedbackText, setFeedbackText] = useState('');
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
 
     const handleApprove = manageClass => {
         fetch(`http://localhost:5000/classes/${manageClass._id}`, {
@@ -52,8 +61,26 @@ const ManageClasses = () => {
             })
     }
 
-    const handleFeedBack = () => {
-
+    const handleFeedBack = manageClass => {
+        const feedbackData = {
+            feedback: feedbackText
+        };
+        fetch(`http://localhost:5000/feedback/${manageClass._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(feedbackData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    refetch();
+                    setIsModalOpen(false);
+                    setFeedbackText('');
+                }
+            });
     }
 
     return (
@@ -125,13 +152,46 @@ const ManageClasses = () => {
                                         </td>
                                     )
                                 }
-                                <td><button onClick={() => handleFeedBack(manageClass)} className="btn btn-error  text-white">Send</button></td>
+                                <td><button onClick={() => handleOpenModal(manageClass)} className="btn btn-error  text-white">Send</button></td>
+                                <Modal
+                                    isOpen={isModalOpen}
+                                    onRequestClose={() => setIsModalOpen(false)}
+                                    contentLabel="Feedback Modal"
+                                >
+                                    <h2>Feedback</h2>
+                                    <textarea
+                                        value={feedbackText}
+                                        onChange={(e) => setFeedbackText(e.target.value)}
+                                    />
+                                    <button
+                                        onClick={() => handleFeedBack(manageClass)}
+                                        className="btn btn-error text-white"
+                                    >
+                                        Send
+                                    </button>
+                                </Modal>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
-
+            <Modal
+                isOpen={isModalOpen}
+                onRequestClose={() => setIsModalOpen(false)}
+                contentLabel="Feedback Modal"
+            >
+                <h2>Feedback</h2>
+                <textarea
+                    value={feedbackText}
+                    onChange={(e) => setFeedbackText(e.target.value)}
+                />
+                <button
+                    onClick={() => handleFeedBack(manageClass)}
+                    className="btn btn-error text-white"
+                >
+                    Send
+                </button>
+            </Modal>
         </div>
     );
 };

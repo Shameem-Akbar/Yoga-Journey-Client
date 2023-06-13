@@ -45,7 +45,7 @@ const MyClasses = () => {
                                 <td className='pl-24'>{myClass.enrolledStudents}</td>
                                 <td className='pl-12'>{myClass.price}</td>
                                 <td><button className='btn btn-primary text-white'>{myClass.status}</button></td>
-                                <td></td>
+                                <td>{myClass.feedback}</td>
                                 <td><button className="btn btn-ghost bg-red-600  text-white">Update</button></td>
                             </tr>)
                         }
