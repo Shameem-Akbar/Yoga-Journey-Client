@@ -12,5 +12,5 @@ This is a website designed to help users to find america's best yoga teacher and
 ## Technology Used: 
 React, Express.js, Node.js, MongoDB, Firebase Authentication, Stripe, JWT Token etc.
 
-## Live Link of Our website: 
+## Live Link of Our website: https://yoga-journey-32fce.web.app/
 
