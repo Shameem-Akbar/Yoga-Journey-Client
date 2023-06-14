@@ -6,7 +6,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './Slider.css'
 
-import slide_image_2 from '../../../../assets/Slider/slider2.jpg'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 

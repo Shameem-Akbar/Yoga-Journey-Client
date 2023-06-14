@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import { ThemeContext } from '../../../providers/ThemeProvider';
+import { useContext } from 'react';
+import './Navbar.css'
 
 const Navbar = () => {
 
@@ -19,6 +22,13 @@ const Navbar = () => {
             .catch(error => console.log(error));
     }
 
+    const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+    const navbarClass = `navbar md:px-6 py-3 border-b-2 bg-slate-100 border-slate-300 ${isDarkMode ? 'dark-navbar' : ''}`;
+
+    const handleToggle = () => {
+        toggleTheme();
+    };
+
     const navItems = (
         <>
             <ActiveLink to="/">Home</ActiveLink>
@@ -32,7 +42,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar md:px-6 bg-base-200 py-3 border-b-2 border-slate-300">
+        <div className={navbarClass}>
             <div className="navbar-start">
                 <div className="dropdown text-black">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -66,6 +76,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <input
+                    type="checkbox"
+                    id="themeToggle"
+                    className="toggle"
+                    checked={isDarkMode}
+                    onChange={handleToggle}
+                />
                 {
                     user ? <>
                         <div className='flex gap-2'>

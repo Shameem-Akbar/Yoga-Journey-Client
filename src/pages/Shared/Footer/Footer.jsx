@@ -1,55 +1,58 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../assets/Icons/logo.png'
 import { FaPhoneAlt } from 'react-icons/fa';
 import { IoLocationSharp } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import moment from 'moment/moment';
+import { ThemeContext } from '../../../providers/ThemeProvider';
+import './Footer.css'
 
 const Footer = () => {
+    const { isDarkMode } = useContext(ThemeContext);
     return (
-        <div>
-            <footer className="footer p-10 bg-base-200 text-base-content border-t-slate-300 border-t-2">
+        <div className={`${isDarkMode ? 'dark-footer text-white' : 'bg-base-200'}`}>
+            <footer className="footer p-10 text-base-content border-t-slate-300 border-t-2">
                 <div>
                     <img width={"190rem"} src={logo} alt="" />
                     <h4 className='ml-2 text-base text-slate-500'>Feel free to reach out to us for any inquiries or assistance <br /> – we're just a phone call or email away!</h4>
                     <div>
                         <div className='flex gap-2'>
-                            <FaPhoneAlt className='mt-1 ml-0.5'></FaPhoneAlt>
-                            <h3 className='font-semibold text-slate-600'>+(555) 555-5555</h3>
+                            <FaPhoneAlt className='mt-1 ml-0.5 text-primary'></FaPhoneAlt>
+                            <h3 className='font-semibold text-slate-500'>+(555) 555-5555</h3>
                         </div>
-                        <div className='flex gap-2  my-2'>
-                            <IoIosMail className='mt-1 text-lg'></IoIosMail>
-                            <h3 className='font-semibold text-slate-600'>info@yogajourney.com</h3>
+                        <div className='flex gap-2 my-2'>
+                            <IoIosMail className='mt-1 text-lg text-primary'></IoIosMail>
+                            <h3 className='font-semibold text-slate-500'>info@yogajourney.com</h3>
                         </div>
                         <div className='flex gap-2'>
-                            <IoLocationSharp className='mt-1 text-lg'></IoLocationSharp>
-                            <h3 className='font-semibold text-slate-600'>Street-01, New York, America</h3>
+                            <IoLocationSharp className='mt-1 text-lg text-primary'></IoLocationSharp>
+                            <h3 className='font-semibold text-slate-500'>Street-01, New York, America</h3>
                         </div>
 
                     </div>
                 </div>
                 <div className='footer flex justify-between'>
                     <div>
-                        <span className="footer-title">Explore</span>
-                        <a className="link link-hover">Features</a>
-                        <a className="link link-hover">Security</a>
-                        <a className="link link-hover">Pricing</a>
+                        <span className="footer-title text-slate-500">Explore</span>
+                        <a className="link link-hover text-slate-400">Features</a>
+                        <a className="link link-hover text-slate-400">Security</a>
+                        <a className="link link-hover text-slate-400">Pricing</a>
                     </div>
                     <div>
-                        <span className="footer-title">Company</span>
-                        <a className="link link-hover">About us</a>
-                        <a className="link link-hover">Contact</a>
-                        <a className="link link-hover">FAQs</a>
+                        <span className="footer-title text-slate-500">Company</span>
+                        <a className="link link-hover text-slate-400">About us</a>
+                        <a className="link link-hover text-slate-400">Contact</a>
+                        <a className="link link-hover text-slate-400">FAQs</a>
                     </div>
                     <div>
-                        <span className="footer-title">Legal</span>
-                        <a className="link link-hover">Terms of use</a>
-                        <a className="link link-hover">Privacy policy</a>
-                        <a className="link link-hover">Cookie policy</a>
+                        <span className="footer-title text-slate-500">Legal</span>
+                        <a className="link link-hover text-slate-400">Terms of use</a>
+                        <a className="link link-hover text-slate-400">Privacy policy</a>
+                        <a className="link link-hover text-slate-400">Cookie policy</a>
                     </div>
                 </div>
                 <div className='md:ml-32'>
-                    <span className="footer-title">Newsletter</span>
+                    <span className="footer-title text-slate-500">Newsletter</span>
                     <div className="form-control w-80">
 
                         <div className="relative">
