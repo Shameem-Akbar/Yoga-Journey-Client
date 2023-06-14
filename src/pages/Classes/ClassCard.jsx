@@ -22,7 +22,7 @@ const ClassCard = ({ singleClass }) => {
         console.log(singleClass);
         if (user && user.email) {
             const selectedClass = { selectedClassId: _id, className, image, price, email: user.email }
-            fetch('http://localhost:5000/selected-classes', {
+            fetch('https://assignment-12-server-xi-three.vercel.app/selected-classes', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

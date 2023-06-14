@@ -23,7 +23,7 @@ const ManageClasses = () => {
     };
 
     const handleApprove = manageClass => {
-        fetch(`http://localhost:5000/classes/${manageClass._id}`, {
+        fetch(`https://assignment-12-server-xi-three.vercel.app/classes/${manageClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -42,7 +42,7 @@ const ManageClasses = () => {
     }
 
     const handleDeny = manageClass => {
-        fetch(`http://localhost:5000/classes/${manageClass._id}/deny`, {
+        fetch(`https://assignment-12-server-xi-three.vercel.app/classes/${manageClass._id}/deny`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -64,7 +64,7 @@ const ManageClasses = () => {
         const feedbackData = {
             feedback: feedbackText
         };
-        fetch(`http://localhost:5000/feedback/${manageClass._id}`, {
+        fetch(`https://assignment-12-server-xi-three.vercel.app/feedback/${manageClass._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
