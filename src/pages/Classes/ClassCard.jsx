@@ -78,6 +78,7 @@ const ClassCard = ({ singleClass }) => {
                 </div>
             </div>
         </div>
+        //test
     );
 };
 
